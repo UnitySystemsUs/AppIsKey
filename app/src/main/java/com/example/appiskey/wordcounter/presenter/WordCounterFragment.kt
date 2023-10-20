@@ -13,7 +13,7 @@ import com.example.appiskey.utils.ResUtil
 class WordCounterFragment : BaseFragment<FragmentWordCounterBinding>() {
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?
+        container: ViewGroup?,
     ) = FragmentWordCounterBinding.inflate(inflater)
 
     override fun setupView() {
@@ -32,9 +32,12 @@ class WordCounterFragment : BaseFragment<FragmentWordCounterBinding>() {
 
     private fun countWords(input: String) {
         val result = ResUtil.charCount(input)
-        Log.d("MainActivity", "Total Words: ${result["total_words"]}\nCount / Word:")
+        var counted = String()
         for (str in result.keys)
-            Log.d("MainActivity", "$str ${result[str]}")
+            counted += "[$str: ${result[str]}], "
+
+        mBinding.tvResult.text = counted
+        mBinding.tvResult.visibility = View.VISIBLE
     }
 
     override fun observeUiStates() {

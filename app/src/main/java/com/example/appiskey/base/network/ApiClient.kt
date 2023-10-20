@@ -1,6 +1,7 @@
 package com.example.appiskey.base.network
 
 import android.util.Log
+import com.example.appiskey.BuildConfig
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.Interceptor

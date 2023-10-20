@@ -40,8 +40,8 @@
         <ProgressBar
             android:id="@+id/pbPhotoLoader"
             style="?android:attr/progressBarStyleSmall"
-            android:layout_width="@dimen/d_50"
-            android:layout_height="@dimen/d_50"
+            android:layout_width="@dimen/d_35"
+            android:layout_height="@dimen/d_35"
             android:background="@android:color/transparent"
             android:indeterminateTint="@color/purple_5341c7"
             app:layout_constraintBottom_toBottomOf="parent"
