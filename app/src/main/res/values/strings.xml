@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AppIsKey</string>
+
+    <string name="string_to_count">There was a reason for her shyness. Everyone assumed it had always been there but she knew better. She knew the exact moment that the shyness began. It had been that fateful moment at the lake. There are just some events that do that to you.</string>
+    <string name="demo_tag">cat</string>
+    <string name="demo_likes">150</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="desc_arrow_back">arrow back</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="internet_connection_issue">Internet connection is down.</string>
+    <string name="preview_img">preview img</string>
+
+</resources>
