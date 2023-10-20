@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/photoListing"
-        android:name="com.example.appiskey.presenter.fragment.PhotoListingFragment"
+        android:name="com.example.appiskey.photolisting.presenter.fragment.PhotoListingFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_photo_listing">
         <action
@@ -16,12 +16,12 @@
     </fragment>
     <fragment
         android:id="@+id/preview"
-        android:name="com.example.appiskey.presenter.fragment.PreviewFragment"
+        android:name="com.example.appiskey.photolisting.presenter.fragment.PreviewFragment"
         android:label="fragment_preview"
         tools:layout="@layout/fragment_preview" />
     <fragment
         android:id="@+id/splash"
-        android:name="com.example.appiskey.presenter.fragment.SplashFragment"
+        android:name="com.example.appiskey.splash.presenter.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
         <action
@@ -33,12 +33,12 @@
     </fragment>
     <fragment
         android:id="@+id/wordCounterFragment"
-        android:name="com.example.appiskey.presenter.fragment.WordCounterFragment"
+        android:name="com.example.appiskey.wordcounter.presenter.WordCounterFragment"
         android:label="fragment_word_counter"
         tools:layout="@layout/fragment_word_counter" />
     <fragment
         android:id="@+id/home"
-        android:name="com.example.appiskey.presenter.fragment.HomeFragment"
+        android:name="com.example.appiskey.home.presenter.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
