@@ -23,12 +23,4 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.navHostContainer) as? NavHostFragment
         navController = navHostFragment?.navController
     }
-
-    private fun countWords() {
-        val input = getString(R.string.string_to_count)
-        val result = ResUtil.charCount(input)
-        Log.d("MainActivity", "Total Words: ${result["total_words"]}\nCount / Word:")
-        for (str in result.keys)
-            Log.d("MainActivity", "$str ${result[str]}")
-    }
 }

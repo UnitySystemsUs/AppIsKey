@@ -12,5 +12,16 @@
 
     <string name="internet_connection_issue">Internet connection is down.</string>
     <string name="preview_img">preview img</string>
+    <string name="title_home">Home</string>
+    <string name="title_listing">Photo Listing</string>
+    <string name="title_preview">Photo Preview</string>
+    <string name="title_counter">Count Words</string>
+    <string name="click_to_count_words">Click to Count Words</string>
+    <string name="click_to_photo_listing">Click to View Photos</string>
+    <string name="error_empty_input">Please write your message to count words Please write your message to count words Please write your message to count words Please write your message to count words
+    Please write your message to count words Please write your message to count words Please write your message to count words Please write your message to count words
+    Please write your message to count words Please write your message to count words Please write your message to count words Please write your message to count words
+    Please write your message to count words Please write your message to count words Please write your message to count words Please write your message to count words
+    Please write your message to count words Please write your message to count words Please write your message to count words Please write your message to count words</string>
 
 </resources>

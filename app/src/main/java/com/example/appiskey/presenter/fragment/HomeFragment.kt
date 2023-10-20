@@ -1,98 +1,34 @@
 package com.example.appiskey.presenter.fragment
 
-import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.appiskey.R
-import com.example.appiskey.adapter.PhotoAdaptor
 import com.example.appiskey.base.BaseFragment
 import com.example.appiskey.databinding.FragmentHomeBinding
-import com.example.appiskey.model.PixabayPhotoModel
-import com.example.appiskey.presenter.viewmodel.HomeViewModel
-import com.example.appiskey.uistate.HomeUiState
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding>(), SwipeRefreshLayout.OnRefreshListener {
-
-    private val homeViewModel: HomeViewModel by activityViewModels()
-    private lateinit var pixabayPhotoList: ArrayList<PixabayPhotoModel>
-
-    private val photoAdaptor: PhotoAdaptor by lazy {
-        PhotoAdaptor {
-            val bundle = Bundle()
-            bundle.putString(PreviewFragment.PREVIEW_IMG_URL, it.largeImageURL)
-            findNavController().navigate(R.id.action_to_preview, bundle)
-        }
-    }
-
+class HomeFragment : BaseFragment<FragmentHomeBinding>(), View.OnClickListener {
     override fun setupViewBinding(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?
     ) = FragmentHomeBinding.inflate(inflater)
 
     override fun setupView() {
-        mBinding.swipeRefreshHome.setOnRefreshListener(this)
-        mBinding.swipeRefreshHome.setColorSchemeResources(
-            R.color.purple_5341c7,
-            R.color.purple_5341c7,
-            R.color.purple_5341c7,
-            R.color.purple_5341c7
-        )
-        if (!::pixabayPhotoList.isInitialized || pixabayPhotoList.isEmpty())
-            homeViewModel.hitApi(requireContext(), hashMapOf())
-        setupRCV()
+        mBinding.layoutHomeHeader.tvTitle.text = getString(R.string.title_home)
+
+        mBinding.btnCountWords.setOnClickListener(this)
+        mBinding.btnViewListing.setOnClickListener(this)
     }
 
     override fun observeUiStates() {
-        homeViewModel.homeUiState.observe(viewLifecycleOwner) {
-            it.getContentIfNotHandled()?.let { state ->
-                when (state) {
-                    is HomeUiState.NoNetwork -> showCommonMessageDialog(
-                        message = getString(R.string.internet_connection_issue)
-                    )
+        Log.d("Home", "observeUiStates")
+    }
 
-                    is HomeUiState.ShowProgress -> {
-                        mBinding.swipeRefreshHome.isRefreshing = true
-                    }
-
-                    is HomeUiState.HitResponse -> {
-                        mBinding.swipeRefreshHome.isRefreshing = false
-                        state.pixabayApiResponse.let { response ->
-                            response.pixabayPhotoList?.let { photoList ->
-                                if (!::pixabayPhotoList.isInitialized)
-                                    pixabayPhotoList = ArrayList()
-                                pixabayPhotoList = photoList
-                                photoAdaptor.setPhotosList(photoList)
-
-                            }
-                        }
-                    }
-
-                    is HomeUiState.Error -> {
-                        mBinding.swipeRefreshHome.isRefreshing = false
-
-                        showCommonMessageDialog(
-                            message = state.errorResponse?.message
-                        )
-                    }
-                }
-            }
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.btnCountWords -> findNavController().navigate(R.id.action_to_wordCounterFragment)
+            R.id.btnViewListing -> findNavController().navigate(R.id.action_to_photoListing)
         }
-    }
-
-    override fun onRefresh() {
-        homeViewModel.hitApi(requireContext(), hashMapOf())
-    }
-
-    private fun setupRCV() {
-        mBinding.rcvHitItem.layoutManager =
-            LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        mBinding.rcvHitItem.adapter = photoAdaptor
     }
 }

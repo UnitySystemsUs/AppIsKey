@@ -4,31 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".presenter.fragment.HomeFragment">
 
     <include
         android:id="@+id/layoutHomeHeader"
         layout="@layout/layout_header"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize" />
+        android:layout_width="@dimen/d_0"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshHome"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="@dimen/d_0"
         android:layout_height="@dimen/d_0"
-
+        android:paddingHorizontal="@dimen/d_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutHomeHeader">
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/btnCountWords"
+            android:layout_width="@dimen/d_0"
+            android:layout_height="@dimen/d_52"
+            android:background="@drawable/shape_purple_border_rounded_4"
+            android:gravity="center"
+            android:padding="@dimen/d_8"
+            android:text="@string/click_to_count_words"
+            android:textAllCaps="false"
+            android:textColor="@color/purple_5341c7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvHitItem"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/layout_photo_item" />
+        <TextView
+            android:id="@+id/btnViewListing"
+            android:layout_width="@dimen/d_0"
+            android:layout_height="@dimen/d_52"
+            android:layout_marginTop="@dimen/d_16"
+            android:background="@drawable/shape_purple_rounded_4"
+            android:gravity="center"
+            android:padding="@dimen/d_8"
+            android:text="@string/click_to_photo_listing"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnCountWords" />
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
